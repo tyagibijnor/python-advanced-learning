@@ -76,6 +76,19 @@ class Manager(Employee):
     def calculate_bonus(self):
         return self.salary * 0.15
 
+class Developer(Employee):
+    def __init__(self, emp_id, name, salary, department, programming_language):
+        super().__init__(emp_id, name, salary, department)
+        self.programming_language = programming_language
+
+    def display_details(self):
+        super().display_details()
+        print(f"Programming Language: {self.programming_language}")
+
+    def calculate_bonus(self):
+        return self.salary * 0.12
+
+
 
 employee1 = Employee(101, "Amit", 65000, "Engineering")
 employee2 = Employee(102, "Vinit", 50000, "Operations")
@@ -110,14 +123,31 @@ emp = Employee(105, "Rahul", 80000, "IT")
 print(emp.salary)
 
 # Test 2: Invalid data type
-emp.salary = "90000"
+## commented out the below line to avoid TypeError
+##emp.salary = "90000"
 
 # Test 3: Boolean salary
-emp.salary = True
+## commented out the below line to avoid TypeError
+## emp.salary = True
 
 # Test 4: Invalid employee string
-Employee.from_string("105,Rahul,80000")
+## commented out the below line to avoid ValueError
+## Employee.from_string("105,Rahul,80000")
 
 # Test 5: Valid salary increment
 emp.increase_salary(0.15)
 print(emp.salary)
+
+
+## testing for developer class
+
+developer = Developer(
+    301,
+    "Rahul",
+    80000,
+    "Engineering",
+    "Python"
+)
+
+developer.display_details()
+print(f"Bonus: ₹{developer.calculate_bonus():,.2f}")
