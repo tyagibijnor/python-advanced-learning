@@ -20,6 +20,19 @@ class Employee:
             raise ValueError("Salary cannot be negative")
 
         self.__salary = value
+    
+    ## using classmethod
+
+    @classmethod
+    def from_string(cls, employee_data):
+        emp_id, name, salary, department = employee_data.split(",")
+
+        return cls(
+            int(emp_id),
+            name,
+            float(salary),
+            department
+        )
 
     def display_details(self):
         print(f"Employee ID: {self.emp_id}")
