@@ -6,8 +6,20 @@ class Employee:
 
         self.emp_id = emp_id
         self.name = name
-        self.salary = salary
+        #self.salary = salary
+        self.__salary = salary
         self.department = department
+
+    @property
+    def salary(self):
+        return self.__salary
+
+    @salary.setter
+    def salary(self, value):
+        if value < 0:
+            raise ValueError("Salary cannot be negative")
+
+        self.__salary = value
 
     def display_details(self):
         print(f"Employee ID: {self.emp_id}")
@@ -47,3 +59,13 @@ for person in [employee1, employee2, manager]:
     person.display_details()
     print(f"Bonus: ₹{person.calculate_bonus():,.2f}")
     print("-" * 40)
+
+
+emp = Employee(101, "Amit", 65000, "Engineering")
+
+print(emp.salary)
+
+emp.salary = 70000
+print(emp.salary)
+
+emp.salary = -5000  # Should raise ValueError
