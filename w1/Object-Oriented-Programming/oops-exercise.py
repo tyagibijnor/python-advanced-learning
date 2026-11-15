@@ -81,4 +81,10 @@ print(emp.salary)
 emp.salary = 70000
 print(emp.salary)
 
-emp.salary = -5000  # Should raise ValueError
+## tested and commented out the below line to avoid ValueError
+## emp.salary = -5000  # Should raise ValueError
+
+## usig class method to create an employee from a string
+employee_data = "103, Navneet, 75000, Product Development"
+new_employee = Employee.from_string(employee_data)
+new_employee.display_details()
