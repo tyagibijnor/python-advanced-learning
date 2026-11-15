@@ -16,6 +16,9 @@ class Employee:
 
     @salary.setter
     def salary(self, value):
+        if not isinstance(value, (int, float)) or isinstance(value, bool):
+            raise TypeError("Salary must be a number")
+            
         if value < 0:
             raise ValueError("Salary cannot be negative")
 
@@ -25,14 +28,23 @@ class Employee:
 
     @classmethod
     def from_string(cls, employee_data):
-        emp_id, name, salary, department = employee_data.split(",")
 
+        ## adding a check to ensure that the input is a string
+        fields = [
+        field.strip()
+        for field in employee_data.split(",")
+    ]
+        ## added a check to ensure that the input string has exactly 4 fields
+        if len(fields) != 4:
+            raise ValueError("Expected 4 employee fields")
+        emp_id, name, salary, department = fields
+        
         return cls(
-            int(emp_id),
-            name,
-            float(salary),
-            department
-        )
+        int(emp_id),
+        name,
+        float(salary),
+        department
+    )
 
     def display_details(self):
         print(f"Employee ID: {self.emp_id}")
@@ -41,9 +53,10 @@ class Employee:
         print(f"Department: {self.department}")
 
     def increase_salary(self, rate):
+        if not isinstance(rate, (int, float)) or isinstance(rate, bool):
+            raise TypeError("Increment rate must be numeric")
         if rate < 0:
             raise ValueError("Increment rate cannot be negative")
-
         self.salary += self.salary * rate
         return self.salary
 
@@ -88,3 +101,23 @@ print(emp.salary)
 employee_data = "103, Navneet, 75000, Product Development"
 new_employee = Employee.from_string(employee_data)
 new_employee.display_details()
+
+
+## test case
+
+# Test 1: Valid salary
+emp = Employee(105, "Rahul", 80000, "IT")
+print(emp.salary)
+
+# Test 2: Invalid data type
+emp.salary = "90000"
+
+# Test 3: Boolean salary
+emp.salary = True
+
+# Test 4: Invalid employee string
+Employee.from_string("105,Rahul,80000")
+
+# Test 5: Valid salary increment
+emp.increase_salary(0.15)
+print(emp.salary)
