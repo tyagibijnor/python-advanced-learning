@@ -23,6 +23,14 @@ class Employee:
             raise ValueError("Salary cannot be negative")
 
         self.__salary = value
+
+    @staticmethod
+    def is_valid_salary(salary):
+        return (
+            isinstance(salary, (int, float))
+            and not isinstance(salary, bool)
+            and salary >= 0
+        )
     
     ## using classmethod
 
