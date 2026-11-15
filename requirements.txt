@@ -1,0 +1,1 @@
+# No third-party packages are required. The lessons use the Python standard library.
