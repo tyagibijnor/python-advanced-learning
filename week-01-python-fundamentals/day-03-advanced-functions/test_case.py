@@ -1,0 +1,36 @@
+## *args – Multiple positional arguments
+def calculate_total(*args):
+    total = sum(args)
+    return total
+
+## test the function
+print(calculate_total(45000, 55000, 65000))
+
+## **kwargs – Multiple keyword arguments
+def display_employee_info(**kwargs):
+    for key, value in kwargs.items():
+        print(f"{key}: {value}")
+
+## test the function
+display_employee_info(empId=123, name="Navneet", salary=70000, department="Product Development")
+
+## Generator functions – Functions that yield values one at a time
+def get_numbers():
+    for i in range(1, 6):
+        yield i
+
+numbers = get_numbers()
+
+for num in numbers:
+    print(num)
+
+## closure – A function defined inside another function that has access to the outer function’s variables
+def outer_function(x):
+    def inner_function(y):
+        return x + y
+    return inner_function
+
+## test the closure
+add_five = outer_function(5)
+print(add_five(10))  # Output: 15
+
