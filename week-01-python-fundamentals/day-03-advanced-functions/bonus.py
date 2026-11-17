@@ -1,23 +1,28 @@
+"""Employee bonus calculation using variable-length keyword arguments."""
+
+INCREMENT_RATE = 0.10
+
+
 def calculate_bonus(**kwargs):
-
-    INCREMENT_RATE = 0.10
-
+    """Return each employee's bonus and the total bonus payout."""
     if not kwargs:
         raise ValueError("At least one employee is required")
 
-    if any(isinstance(s, bool) or not isinstance(s, (int, float))
-           for s in kwargs.values()):
+    if any(
+        isinstance(salary, bool) or not isinstance(salary, (int, float))
+        for salary in kwargs.values()
+    ):
         raise TypeError("Salary must be numeric")
 
-    if any(s < 0 for s in kwargs.values()):
+    if any(salary < 0 for salary in kwargs.values()):
         raise ValueError("Salary cannot be negative")
 
-    bonuses = {}
-
-    for employee, salary in kwargs.items():
-        bonuses[employee] = round(salary * INCREMENT_RATE, 2)
+    bonuses = {
+        employee: round(salary * INCREMENT_RATE, 2)
+        for employee, salary in kwargs.items()
+    }
 
     return {
         "bonuses": bonuses,
-        "total_bonus": sum(bonuses.values())
+        "total_bonus": sum(bonuses.values()),
     }

@@ -1,68 +1,47 @@
 # Day 3 – Advanced Python Functions
 
-## Topics Covered
+## Learning covered
 
-### 1. Variable-Length Arguments
+### Variable-length arguments
 
 - `*args` – Accept multiple positional arguments.
 - `**kwargs` – Accept multiple keyword arguments.
 - Dictionary iteration using `.items()`.
 
-### 2. Practical Exercises
+### Practical exercises
 
-**Exercise 1 – Employee Salary Report (`salary.py`)**
+- `salary.py` – Calculate total, average, and highest salary using `*args`.
+- `bonus.py` – Calculate individual and total employee bonuses using `**kwargs`.
+- Both functions validate empty input, numeric types, booleans, and negative values.
 
-- Calculate total salary.
-- Calculate average salary.
-- Find highest salary.
-- Validate salary inputs.
+### Unit testing
 
-**Exercise 2 – Employee Bonus Calculator (`bonus.py`)**
+- `test_salary.py` – Salary calculation and input validation tests.
+- `test_bonus.py` – Bonus calculation and input validation tests.
+- Tests use Python's built-in `unittest` framework.
 
-- Calculate employee bonuses using a 10% rate.
-- Calculate total bonus payout.
-- Validate input data.
-- Return structured results.
+### Additional concept demonstrations
 
-### 3. Unit Testing
+`function_concepts_demo.py` preserves the original introductory examples for
+generators (`yield`), closures, and decorators. These are demonstration
+snippets, not a claim that the detailed lessons have been completed.
 
-Using Python's built-in `unittest` framework:
+## Run the examples
 
-- `test_salary.py`
-- `test_bonus.py`
+```bash
+python function_concepts_demo.py
+```
 
-Test scenarios:
-- Valid calculations.
-- Empty input.
-- Negative salary.
-- Expected exceptions.
-
-## How to Run
-
-Run the tests from this directory:
+## Run all tests
 
 ```bash
 python -m unittest -v
 ```
 
-Run individual test files:
+## Key learning outcomes
 
-```bash
-python -m unittest -v test_salary.py
-python -m unittest -v test_bonus.py
-```
-
-## Key Learnings
-
-- Writing reusable functions.
-- Handling variable-length arguments.
-- Input validation and exception handling.
-- Separating business logic from presentation.
-- Automated unit testing.
-
-## Next Topics
-
-- Generators and `yield`
-- Iterators
-- Closures
-- Decorators
+- Reusable functions and variable-length arguments
+- Input validation and exception handling
+- Separating business logic from printed output
+- Returning structured dictionaries
+- Automated tests for normal and invalid input

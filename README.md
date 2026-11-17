@@ -1,44 +1,40 @@
 # Python Advanced Learning 🚀
 
-A hands-on Python engineering learning journey focused on advanced Python concepts, clean coding practices, software design, testing, and real-world application development.
+### By Navneet Tyagi | Software Development Manager | Aspiring AI Engineer
 
-**Author:** Navneet Tyagi  
-**GitHub:** [@tyagibijnor](https://github.com/tyagibijnor)
+A hands-on Python engineering learning journey focused on programming
+fundamentals, clean code, software design, testing, and practical applications.
 
-## 🎯 Learning Objectives
+I'm Navneet Tyagi, a software development professional with 15+ years of
+experience in software engineering, product development, and technical
+leadership. This repository documents my practical learning journey as I
+strengthen Python skills and progress toward Generative AI and LLM engineering.
 
-- Strengthen advanced Python programming skills.
-- Write reusable, maintainable and production-oriented code.
-- Understand Object-Oriented Programming and Functional Programming.
+**Connect with me**
+- GitHub: [@tyagibijnor](https://github.com/tyagibijnor)
+- LinkedIn: [Navneet Tyagi](https://www.linkedin.com/in/navneet-tyagi-9597155a/)
+
+## Learning objectives
+
+- Strengthen Python programming and problem-solving skills.
+- Write reusable, readable, and maintainable code.
+- Practise functional and object-oriented programming.
 - Build confidence in automated testing and debugging.
-- Develop practical projects using Python.
-- Prepare for Generative AI, LLM Engineering, RAG and AI Agent development.
+- Develop a foundation for Generative AI, LLMs, RAG, and AI agents.
 
-## 📚 Learning Progress
+## Learning progress
 
 ### Week 1 – Python Fundamentals
 
-| Day | Topic | Practical Work | Status |
+| Day | Topic | Practical work | Progress |
 |---|---|---|---|
-| Day 1 | Functional Programming | Employee salary analytics, lambda, map, filter, reduce | ✅ Completed |
-| Day 2 | Object-Oriented Programming | Employee class, encapsulation, inheritance and methods | ✅ Completed |
-| Day 3 | Advanced Functions | *args, **kwargs, salary and bonus calculators | ✅ Completed |
-| Day 3 | Unit Testing | unittest, assertions, exception testing | ✅ Completed |
-| Day 3 | Generators and Iterators | yield, next(), StopIteration | 🔄 In Progress |
-| Day 3 | Closures and Decorators | Function closures and decorators | ⏳ Upcoming |
+| Day 1 | Functional programming | Employee salary analytics, lambda, map, filter, reduce | Completed |
+| Day 2 | Object-oriented programming | Employee hierarchy, encapsulation, inheritance, polymorphism, composition | Completed |
+| Day 3 | Advanced functions | `*args`, `**kwargs`, salary and bonus calculators | Completed |
+| Day 3 | Unit testing | `unittest`, assertions, exception and input validation tests | Completed |
+| Day 3 | Generators, closures, decorators | Introductory examples preserved; detailed lessons remain to be completed | In progress |
 
-## 🛠️ Technologies & Concepts
-
-- Python 3
-- Functional Programming
-- Object-Oriented Programming
-- *args and **kwargs
-- Exception Handling
-- Input Validation
-- Unit Testing with unittest
-- Git and GitHub
-
-## 📂 Repository Structure
+## Repository structure
 
 ```text
 python-advanced-learning/
@@ -47,70 +43,85 @@ python-advanced-learning/
 ├── .gitignore
 └── week-01-python-fundamentals/
     ├── day-01-functional-programming/
+    │   ├── employee_salary_analytics.py
+    │   ├── test_employee_salary_analytics.py
+    │   ├── examples/
+    │   └── README.md
     ├── day-02-object-oriented-programming/
+    │   ├── employee.py
+    │   ├── manager.py
+    │   ├── developer.py
+    │   ├── department.py
+    │   ├── main.py
+    │   ├── test_employee.py
+    │   ├── test_department.py
+    │   └── README.md
     └── day-03-advanced-functions/
+        ├── salary.py
+        ├── test_salary.py
+        ├── bonus.py
+        ├── test_bonus.py
+        ├── function_concepts_demo.py
+        └── README.md
 ```
 
-## ▶️ How to Run
+The Day 1 `examples/` folder retains the earlier exercises and focused
+examples for lambda, map, filter, and reduce. The Day 2 learning diagrams are
+also retained in their original lesson folder.
+
+## Getting started
 
 Clone the repository:
 
 ```bash
 git clone https://github.com/tyagibijnor/python-advanced-learning.git
-
 cd python-advanced-learning
 ```
 
-Run the salary calculator tests:
+The lessons currently use the Python standard library; no third-party
+dependencies are required.
+
+Run tests from an individual lesson directory. For example:
 
 ```bash
-python -m unittest -v week-01-python-fundamentals.day-03-advanced-functions.test_salary
-```
-
-Run the bonus calculator tests:
-
-```bash
-python -m unittest -v week-01-python-fundamentals.day-03-advanced-functions.test_bonus
-```
-
-Alternatively, navigate to the Day 3 directory and run:
-
-```bash
+cd week-01-python-fundamentals/day-03-advanced-functions
 python -m unittest -v
 ```
 
-## 🧪 Testing
+Run the Day 2 demonstration:
 
-Automated tests are written using Python's built-in `unittest` framework.
+```bash
+cd ../day-02-object-oriented-programming
+python main.py
+```
 
-Current test coverage includes:
+## Technologies and concepts
 
-- Valid salary calculations
-- Average and highest salary calculations
-- Employee bonus calculations
-- Empty input validation
-- Negative salary validation
-- Invalid data type validation
+- Python 3
+- Functional programming
+- Object-oriented programming
+- Classes, inheritance, encapsulation, and composition
+- `*args` and `**kwargs`
+- Exception handling and input validation
+- Unit testing with `unittest`
+- Git and GitHub
 
-## 🗺️ Future Learning Roadmap
+## Future learning roadmap
 
-- Advanced Python
-- Generators and Iterators
-- Closures and Decorators
+- Iterators, generators, closures, and decorators
 - Python typing and clean architecture
 - Advanced SQL and databases
 - FastAPI and Django
 - NumPy and Pandas
 - Generative AI and LLMs
 - Retrieval-Augmented Generation (RAG)
-- Vector Databases
-- AI Agents
-- LLM Application Development
+- Vector databases
+- AI agents and LLM application development
 
-## 📈 Learning Philosophy
+## Learning philosophy
 
-Learn by building. Practice consistently. Write tests. Review code. Improve every day.
+Learn by building. Practise consistently. Write tests. Review code. Improve
+every day.
 
-This repository documents my practical journey toward becoming a stronger Python and AI Engineer.
-
-⭐ Feel free to explore, learn and share feedback!
+This repository records the practical work, exercises, tests, and progress
+made throughout the learning journey.

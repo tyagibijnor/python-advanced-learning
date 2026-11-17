@@ -1,1 +1,2 @@
-# No third-party packages are required. The lessons use the Python standard library.
+# No third-party dependencies are required yet.
+# Current lessons use only the Python standard library.

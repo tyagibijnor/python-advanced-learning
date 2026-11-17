@@ -1,23 +1,24 @@
-def salary_report(*args):
+"""Salary reporting utilities using variable-length positional arguments."""
 
+
+def salary_report(*args):
+    """Return total, average, and highest salary from the supplied values."""
     if not args:
         raise ValueError("At least one salary is required")
 
-    if any(isinstance(s, bool) or not isinstance(s, (int, float))
-           for s in args):
+    if any(
+        isinstance(salary, bool) or not isinstance(salary, (int, float))
+        for salary in args
+    ):
         raise TypeError("Salary must be numeric")
 
-    if any(s < 0 for s in args):
+    if any(salary < 0 for salary in args):
         raise ValueError("Salary cannot be negative")
 
     total_salary = sum(args)
-    average_salary = total_salary / len(args)
-    highest_salary = max(args)
 
-    report = {
+    return {
         "total_salary": total_salary,
-        "average_salary": average_salary,
-        "highest_salary": highest_salary
+        "average_salary": total_salary / len(args),
+        "highest_salary": max(args),
     }
-
-    return report
