@@ -1,11 +1,19 @@
+# Python cache
 __pycache__/
 *.py[cod]
-*$py.class
 
-.venv/
+# Virtual environments
 venv/
-env/
+.venv/
 
+# IDE settings
+.vscode/
+.idea/
+
+# Environment variables
+.env
+
+# Test and coverage cache
 .pytest_cache/
 .coverage
 htmlcov/
