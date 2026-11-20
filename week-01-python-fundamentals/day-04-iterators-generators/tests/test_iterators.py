@@ -1,10 +1,13 @@
 """Unit tests for basic iterator behavior."""
-
 import io
+import sys
 import unittest
+from pathlib import Path
 from contextlib import redirect_stdout
 
-from iterators import basic_iter
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+
+from examples.iterators import basic_iter
 
 
 class IteratorTests(unittest.TestCase):

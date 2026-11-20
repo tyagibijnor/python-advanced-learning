@@ -110,5 +110,5 @@ basic_iter(employee_names)
 ## Unit tests
 
 - `test_generators.py` tests number, even-number, employee, and empty-list
-  generator behavior.
+  generator behavior, plus filtering `ERROR` lines from a temporary log file.
 - `test_iterators.py` tests printed output for populated and empty sequences.
