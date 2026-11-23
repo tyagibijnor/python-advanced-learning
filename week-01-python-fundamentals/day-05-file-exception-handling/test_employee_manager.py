@@ -17,7 +17,7 @@ class TestEmployeeManager(unittest.TestCase):
         self.temp_dir.cleanup()
 
     def test_save_and_load_employees(self):
-        employees = [{"id": 1, "name": "Rahul", "salary": 50000}]
+        employees = [{"id": 1, "name": "Navneet", "salary": 50000}]
 
         self.manager.save_employees(employees)
 
@@ -27,7 +27,7 @@ class TestEmployeeManager(unittest.TestCase):
         self.assertEqual(self.manager.load_employees(), [])
 
     def test_invalid_salary_raises_exception(self):
-        employee = [{"id": 1, "name": "Rahul", "salary": -100}]
+        employee = [{"id": 1, "name": "Navneet", "salary": -100}]
 
         with self.assertRaises(InvalidEmployeeError):
             self.manager.save_employees(employee)
@@ -39,13 +39,13 @@ class TestEmployeeManager(unittest.TestCase):
             self.manager.save_employees(employee)
 
     def test_missing_employee_salary(self):
-        employee = [{"id": 1, "name": "Rahul"}]
+        employee = [{"id": 1, "name": "Navneet"}]
 
         with self.assertRaises(InvalidEmployeeError):
             self.manager.save_employees(employee)
 
     def test_missing_employee_id(self):
-        employee = [{"name": "Rahul", "salary": 50000}]
+        employee = [{"name": "Navneet", "salary": 50000}]
 
         with self.assertRaises(InvalidEmployeeError):
             self.manager.save_employees(employee)
@@ -55,7 +55,7 @@ class TestEmployeeManager(unittest.TestCase):
 
         for invalid_id in invalid_ids:
             with self.subTest(invalid_id=invalid_id):
-                employee = [{"id": invalid_id, "name": "Rahul", "salary": 50000}]
+                employee = [{"id": invalid_id, "name": "Navneet", "salary": 50000}]
 
                 with self.assertRaises(InvalidEmployeeError):
                     self.manager.save_employees(employee)
@@ -78,21 +78,21 @@ class TestEmployeeManager(unittest.TestCase):
 
     def test_employee_must_be_a_dictionary(self):
         with self.assertRaises(InvalidEmployeeError):
-            self.manager.save_employees(["Rahul"])
+            self.manager.save_employees(["Navneet"])
 
     def test_nan_salary_raises_exception(self):
-        employee = [{"id": 1, "name": "Rahul", "salary": float("nan")}]
+        employee = [{"id": 1, "name": "Navneet", "salary": float("nan")}]
         with self.assertRaises(InvalidEmployeeError):
             self.manager.save_employees(employee)
 
     def test_infinite_salary_raises_exception(self):
-        employee = [{"id": 1, "name": "Rahul", "salary": float("inf")}]
+        employee = [{"id": 1, "name": "Navneet", "salary": float("inf")}]
         with self.assertRaises(InvalidEmployeeError):
             self.manager.save_employees(employee)
 
     def test_employee_string_input_raises_exception(self):
         with self.assertRaises(InvalidEmployeeError):
-            self.manager.save_employees(["Rahul"])
+            self.manager.save_employees(["Navneet"])
 
     def test_employee_list_input_raises_exception(self):
         with self.assertRaises(InvalidEmployeeError):
@@ -118,7 +118,12 @@ class TestEmployeeManager(unittest.TestCase):
             self.manager.save_employees(employee)
     
     def test_negative_infinite_salary_raises_exception(self):
-        employee = [{"id": 1, "name": "Rahul", "salary": float("-inf")}]
+        employee = [{"id": 1, "name": "Navneet", "salary": float("-inf")}]
+        with self.assertRaises(InvalidEmployeeError):
+            self.manager.save_employees(employee)
+    
+    def test_large_integer_salary_raises_exception(self):
+        employee = [{"id": 1, "name": "Navneet", "salary": 10**1000}]
         with self.assertRaises(InvalidEmployeeError):
             self.manager.save_employees(employee)
 
