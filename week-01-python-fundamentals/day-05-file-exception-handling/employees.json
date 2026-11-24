@@ -1,12 +1,17 @@
 [
     {
         "id": 101,
-        "name": "Rahul",
+        "name": "Rahul Sharma",
         "salary": 50000
     },
     {
         "id": 102,
-        "name": "Amit",
+        "name": "Amit Verma",
         "salary": 60000
+    },
+    {
+        "id": 103,
+        "name": "Priya Singh",
+        "salary": 40000
     }
 ]

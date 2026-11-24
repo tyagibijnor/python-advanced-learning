@@ -123,7 +123,9 @@ class TestEmployeeManager(unittest.TestCase):
         self.manager.save_employees(original)
         original_content = self.file_path.read_text(encoding="utf-8")
 
-        with patch("employee_manager.os.replace", side_effect=OSError("simulated failure")):
+        with patch(
+            "employee_manager.os.replace", side_effect=OSError("simulated failure")
+        ):
             with self.assertRaises(RuntimeError):
                 self.manager.save_employees(replacement)
 
@@ -137,7 +139,9 @@ class TestEmployeeManager(unittest.TestCase):
         self.manager.save_employees(original)
         original_content = self.file_path.read_text(encoding="utf-8")
 
-        with patch("employee_manager.json.dump", side_effect=TypeError("simulated failure")):
+        with patch(
+            "employee_manager.json.dump", side_effect=TypeError("simulated failure")
+        ):
             with self.assertRaises(RuntimeError):
                 self.manager.save_employees(replacement)
 
@@ -146,7 +150,7 @@ class TestEmployeeManager(unittest.TestCase):
         self.assertEqual(list(self.file_path.parent.iterdir()), [self.file_path])
 
     def test_invalid_utf8_file_raises_exception(self):
-        self.file_path.write_bytes(b"\\xff")
+        self.file_path.write_bytes(bytes([0xFF]))
         with self.assertRaises(InvalidEmployeeError):
             self.manager.load_employees()
 

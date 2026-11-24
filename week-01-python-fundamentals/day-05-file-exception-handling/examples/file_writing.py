@@ -1,4 +1,3 @@
-
 """Append text to a file using pathlib."""
 
 from pathlib import Path
