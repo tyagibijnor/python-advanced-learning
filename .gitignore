@@ -18,4 +18,8 @@ venv/
 .coverage
 htmlcov/
 
+# Ignore ZIP archives
 *.zip
+
+# Personal learning notes - local only
+Learning-Notes/
