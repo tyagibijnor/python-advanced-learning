@@ -1,4 +1,3 @@
-
 """Load employee JSON and print basic salary statistics."""
 
 import json
@@ -8,16 +7,17 @@ from pathlib import Path
 
 def is_valid_salary(salary: object) -> bool:
     """Return True for positive, finite numeric salaries."""
+
     if isinstance(salary, bool):
+        return False
+
+    if not isinstance(salary, (int, float)):
         return False
 
     if isinstance(salary, int):
         return salary > 0
 
-    if isinstance(salary, float):
-        return math.isfinite(salary) and salary > 0
-
-    return False
+    return math.isfinite(salary) and salary > 0
 
 
 def salary_analysis(json_file: str | Path) -> None:
@@ -34,8 +34,7 @@ def salary_analysis(json_file: str | Path) -> None:
     salaries = [
         employee["salary"]
         for employee in employees
-        if isinstance(employee, dict)
-        and is_valid_salary(employee.get("salary"))
+        if isinstance(employee, dict) and is_valid_salary(employee.get("salary"))
     ]
 
     if not salaries:
