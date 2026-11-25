@@ -7,6 +7,7 @@ from database import (
     get_employee_by_id,
     get_all_employees,
     update_employee,
+    delete_employee,
 )
 
 
@@ -46,7 +47,7 @@ class TestDatabaseConnection(unittest.TestCase):
             65000.00,
         )
         # Automatically delete test data after the test
-        self.addCleanup(self.delete_employee, employee_id)
+        self.addCleanup(self.cleanup_employee, employee_id)
 
         self.assertIsInstance(employee_id, int)
         self.assertGreater(employee_id, 0)
@@ -77,7 +78,7 @@ class TestDatabaseConnection(unittest.TestCase):
             "Engineering",
             70000.00,
         )
-        self.addCleanup(self.delete_employee, employee_id)
+        self.addCleanup(self.cleanup_employee, employee_id)
         employee = get_employee_by_id(employee_id)
 
         self.assertIsNotNone(employee)
@@ -96,7 +97,7 @@ class TestDatabaseConnection(unittest.TestCase):
             75000.00,
         )
 
-        self.addCleanup(self.delete_employee, employee_id)
+        self.addCleanup(self.cleanup_employee, employee_id)
         employees = get_all_employees()
 
         self.assertIsInstance(employees, list)
@@ -113,7 +114,7 @@ class TestDatabaseConnection(unittest.TestCase):
             65000.00,
         )
 
-        self.addCleanup(self.delete_employee, employee_id)
+        self.addCleanup(self.cleanup_employee, employee_id)
         affected_rows = update_employee(
             employee_id,
             "Data Science",
@@ -123,6 +124,65 @@ class TestDatabaseConnection(unittest.TestCase):
         self.assertEqual(affected_rows, 1)
         self.assertEqual(employee["department"], "Data Science")
         self.assertEqual(float(employee["salary"]), 85000.00)
+
+    def cleanup_employee(self, employee_id):
+        connection = get_db_connection()
+        cursor = None
+
+        try:
+            cursor = connection.cursor()
+            cursor.execute(
+                "DELETE FROM employees WHERE employee_id = %s",
+                (employee_id,),
+            )
+            connection.commit()
+
+        except Exception:
+            connection.rollback()
+            raise
+
+        finally:
+            if cursor is not None:
+                cursor.close()
+
+            connection.close()
+
+    def test_delete_employee(self):
+        email = f"delete-{uuid4().hex}@example.com"
+        employee_id = create_employee(
+            "Delete Test Employee",
+            email,
+            "Engineering",
+            65000.00,
+        )
+
+        self.addCleanup(self.cleanup_employee, employee_id)
+        affected_rows = delete_employee(employee_id)
+        employee = get_employee_by_id(employee_id)
+
+        self.assertEqual(affected_rows, 1)
+        self.assertIsNone(employee)
+
+    def test_delete_non_existing_employee(self):
+        email = f"missing-{uuid4().hex}@example.com"
+
+        employee_id = create_employee(
+            "Missing Test Employee",
+            email,
+            "Engineering",
+            55000.00,
+        )
+
+        self.addCleanup(self.cleanup_employee, employee_id)
+
+        # First deletion should succeed.
+        first_delete = delete_employee(employee_id)
+
+        # Second deletion should find no matching record.
+        second_delete = delete_employee(employee_id)
+
+        self.assertEqual(first_delete, 1)
+        self.assertEqual(second_delete, 0)
 
 
 if __name__ == "__main__":

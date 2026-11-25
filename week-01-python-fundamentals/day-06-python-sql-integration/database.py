@@ -162,3 +162,33 @@ def update_employee(employee_id, department, salary):
             cursor.close()
 
         connection.close()
+
+
+def delete_employee(employee_id):
+    """Delete an employee by ID and return affected rows."""
+
+    connection = get_db_connection()
+    cursor = None
+
+    try:
+        cursor = connection.cursor()
+
+        query = """
+            DELETE FROM employees
+            WHERE employee_id = %s
+        """
+
+        cursor.execute(query, (employee_id,))
+        connection.commit()
+
+        return cursor.rowcount
+
+    except Exception:
+        connection.rollback()
+        raise
+
+    finally:
+        if cursor is not None:
+            cursor.close()
+
+        connection.close()
