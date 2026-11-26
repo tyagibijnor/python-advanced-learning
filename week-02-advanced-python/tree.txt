@@ -1,0 +1,36 @@
+week-02-advanced-python/
+│
+├── day-01-closures-decorators/
+│   ├── notes.md
+│   ├── decorators.py
+│   └── test_decorators.py
+│
+├── day-02-context-managers/
+│   ├── notes.md
+│   ├── context_managers.py
+│   └── test_context_managers.py
+│
+├── day-03-advanced-data-structures/
+│   ├── notes.md
+│   ├── data_structures.py
+│   └── test_data_structures.py
+│
+├── day-04-type-hints-dataclasses/
+│   ├── notes.md
+│   ├── employee.py
+│   └── test_employee.py
+│
+├── day-05-modules-packages/
+│   ├── notes.md
+│   └── employee_toolkit/
+│
+├── day-06-practical-exercises/
+│   ├── exercises.py
+│   └── tests/
+│
+├── day-07-mini-project/
+│   ├── employee_analytics/
+│   ├── tests/
+│   └── README.md
+│
+└── README.md
